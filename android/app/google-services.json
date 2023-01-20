@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1012426017187",
+    "project_id": "catalogo-de-livros-d8b7e",
+    "storage_bucket": "catalogo-de-livros-d8b7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012426017187:android:12ebfb0da455d3016ab216",
+        "android_client_info": {
+          "package_name": "com.example.catalogo_livros"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012426017187-ia5vvdpdf1ik6m35i4c5pq94eh0ugqs8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClVeDv-6i89tcx6HFErjQYmoIHhCUNwUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012426017187-ia5vvdpdf1ik6m35i4c5pq94eh0ugqs8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
