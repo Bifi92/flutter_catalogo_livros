@@ -1,47 +1,68 @@
+import 'package:catalogo_livros/dao/emprestimo.dart';
 import 'package:catalogo_livros/dao/livro.dart';
+import 'package:catalogo_livros/dao/pessoa.dart';
+import 'package:catalogo_livros/models/emprestimo.dart';
 import 'package:catalogo_livros/models/livro.dart';
+import 'package:catalogo_livros/models/pessoa.dart';
 import 'package:catalogo_livros/utils/constantes.dart';
+import 'package:date_time_picker/date_time_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 class EmprestarLivroParaPessoaScreen extends StatelessWidget {
   const EmprestarLivroParaPessoaScreen({super.key});
-
   static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  static final TextEditingController nomeTextFormFieldController =
+  static final TextEditingController idPessoaTextFormFieldController =
       TextEditingController();
 
-  static final TextEditingController autorTextFormFieldController =
+  static final TextEditingController nomePessoaTextFormFieldController =
       TextEditingController();
 
-  static final TextEditingController observacaoTextFormFieldController =
+  static final TextEditingController idLivroTextFormFieldController =
+      TextEditingController();
+
+  static final TextEditingController nomeLivroTextFormFieldController =
+      TextEditingController();
+
+  static final TextEditingController dataRetiradaTextFormFieldController =
+      TextEditingController();
+
+  static final TextEditingController dataDevolucaoTextFormFieldController =
       TextEditingController();
 
   onSalvar(BuildContext context) {
     formKey.currentState?.validate();
-    salvarLivro(
-      LivroModel(
-        id: L_VAZIO,
-        nome: nomeTextFormFieldController.text,
-        autor: autorTextFormFieldController.text,
-        observacao: observacaoTextFormFieldController.text,
-      ),
-    );
+    salvarEmprestimo(EmprestimoModel(
+      idLivro: idLivroTextFormFieldController.text,
+      idPessoa: idPessoaTextFormFieldController.text,
+      dataRetirada: DateTime.parse(dataRetiradaTextFormFieldController.text),
+      dataDevolucao: DateTime.parse(dataDevolucaoTextFormFieldController.text),
+    ));
     Navigator.pop(context);
   }
 
-  void initData() {
-    nomeTextFormFieldController.text = "";
-    autorTextFormFieldController.text = "";
-    observacaoTextFormFieldController.text = "";
+  void initData(BuildContext context) {
+    List lista = ModalRoute.of(context)!.settings.arguments as List;
+
+    PessoaModel pessoa = lista.elementAt(0);
+    LivroModel livro = lista.elementAt(1);
+
+    idPessoaTextFormFieldController.text = pessoa.id;
+    nomePessoaTextFormFieldController.text = pessoa.nome;
+    idLivroTextFormFieldController.text = livro.id;
+    nomeLivroTextFormFieldController.text = livro.nome;
+    dataRetiradaTextFormFieldController.text = DateTime.now().toString();
+    dataDevolucaoTextFormFieldController.text = "";
   }
 
   @override
   Widget build(BuildContext context) {
-    initData();
+    initData(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text(L_CADASTRAR),
+        title: Text(
+            '$L_EMPRESTAR ${nomeLivroTextFormFieldController.text} para ${nomePessoaTextFormFieldController.text}'),
       ),
       body: Form(
         key: formKey,
@@ -52,62 +73,13 @@ class EmprestarLivroParaPessoaScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    enabled: true,
-                    controller: nomeTextFormFieldController,
-                    decoration: const InputDecoration(
-                      labelText: L_LIVRO_NOME,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(25.0),
-                        ),
-                      ),
-                    ),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return E_CAMPO_OBRIGATORIO;
-                      }
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    enabled: true,
-                    controller: autorTextFormFieldController,
-                    decoration: const InputDecoration(
-                      labelText: L_LIVRO_AUTOR,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(25.0),
-                        ),
-                      ),
-                    ),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return E_CAMPO_OBRIGATORIO;
-                      }
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    enabled: true,
-                    maxLines: null,
-                    minLines: 5,
-                    controller: observacaoTextFormFieldController,
-                    decoration: const InputDecoration(
-                      labelText: L_LIVRO_OBSERVACAO,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(25.0),
-                        ),
-                      ),
-                    ),
-                    keyboardType: TextInputType.multiline,
+                  child: DateTimePicker(
+                    controller: dataDevolucaoTextFormFieldController,
+                    firstDate: DateTime.now(),
+                    lastDate: DateTime(2100),
+                    dateLabelText: L_EMPRESTAR_LIVRO_DATA_DEVOLUCAO,
+                    onChanged: (value) =>
+                        dataDevolucaoTextFormFieldController.text = value,
                   ),
                 ),
                 Row(

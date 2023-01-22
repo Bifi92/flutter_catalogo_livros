@@ -1,6 +1,4 @@
-import 'package:catalogo_livros/dao/livro.dart';
 import 'package:catalogo_livros/dao/pessoa.dart';
-import 'package:catalogo_livros/models/livro.dart';
 import 'package:catalogo_livros/models/pessoa.dart';
 import 'package:catalogo_livros/utils/constantes.dart';
 import 'package:flutter/material.dart';
@@ -40,13 +38,13 @@ class EditarPessoaScreen extends StatelessWidget {
   }
 
   void initData(BuildContext context) {
-    PessoaModel livro =
+    PessoaModel pessoa =
         ModalRoute.of(context)!.settings.arguments as PessoaModel;
 
-    idTextFormFieldController.text = livro.id;
-    nomeTextFormFieldController.text = livro.nome;
-    enderecoTextFormFieldController.text = livro.endereco;
-    telefoneTextFormFieldController.text = livro.telefone;
+    idTextFormFieldController.text = pessoa.id;
+    nomeTextFormFieldController.text = pessoa.nome;
+    enderecoTextFormFieldController.text = pessoa.endereco;
+    telefoneTextFormFieldController.text = pessoa.telefone;
   }
 
   @override
