@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: R_DASHBOARD,
+      initialRoute: R_DASHBOARD_LIVRO,
       routes: rotas,
     );
   }

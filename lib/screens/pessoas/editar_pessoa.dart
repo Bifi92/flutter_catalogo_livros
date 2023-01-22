@@ -1,12 +1,12 @@
 import 'package:catalogo_livros/dao/livro.dart';
+import 'package:catalogo_livros/dao/pessoa.dart';
 import 'package:catalogo_livros/models/livro.dart';
+import 'package:catalogo_livros/models/pessoa.dart';
 import 'package:catalogo_livros/utils/constantes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class EditarLivroScreen extends StatelessWidget {
-  const EditarLivroScreen({super.key});
+class EditarPessoaScreen extends StatelessWidget {
+  const EditarPessoaScreen({super.key});
   static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   static final TextEditingController idTextFormFieldController =
@@ -15,37 +15,38 @@ class EditarLivroScreen extends StatelessWidget {
   static final TextEditingController nomeTextFormFieldController =
       TextEditingController();
 
-  static final TextEditingController autorTextFormFieldController =
+  static final TextEditingController enderecoTextFormFieldController =
       TextEditingController();
 
-  static final TextEditingController observacaoTextFormFieldController =
+  static final TextEditingController telefoneTextFormFieldController =
       TextEditingController();
 
   onSalvar(BuildContext context) {
     formKey.currentState?.validate();
-    salvarLivro(
-      LivroModel(
+    salvarPessoa(
+      PessoaModel(
         id: idTextFormFieldController.text,
         nome: nomeTextFormFieldController.text,
-        autor: autorTextFormFieldController.text,
-        observacao: observacaoTextFormFieldController.text,
+        endereco: enderecoTextFormFieldController.text,
+        telefone: telefoneTextFormFieldController.text,
       ),
     );
     Navigator.pop(context);
   }
 
   onDeletar(BuildContext context) {
-    deletarLivro(idTextFormFieldController.text);
+    deletarPessoa(idTextFormFieldController.text);
     Navigator.pop(context);
   }
 
   void initData(BuildContext context) {
-    LivroModel livro = ModalRoute.of(context)!.settings.arguments as LivroModel;
+    PessoaModel livro =
+        ModalRoute.of(context)!.settings.arguments as PessoaModel;
 
     idTextFormFieldController.text = livro.id;
     nomeTextFormFieldController.text = livro.nome;
-    autorTextFormFieldController.text = livro.autor;
-    observacaoTextFormFieldController.text = livro.observacao;
+    enderecoTextFormFieldController.text = livro.endereco;
+    telefoneTextFormFieldController.text = livro.telefone;
   }
 
   @override
@@ -68,7 +69,7 @@ class EditarLivroScreen extends StatelessWidget {
                     enabled: true,
                     controller: nomeTextFormFieldController,
                     decoration: const InputDecoration(
-                      labelText: L_LIVRO_NOME,
+                      labelText: L_PESSOA_NOME,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(25.0),
@@ -87,9 +88,9 @@ class EditarLivroScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     enabled: true,
-                    controller: autorTextFormFieldController,
+                    controller: enderecoTextFormFieldController,
                     decoration: const InputDecoration(
-                      labelText: L_LIVRO_AUTOR,
+                      labelText: L_PESSOA_ENDERECO,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(25.0),
@@ -108,18 +109,21 @@ class EditarLivroScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     enabled: true,
-                    maxLines: null,
-                    minLines: 5,
-                    controller: observacaoTextFormFieldController,
+                    controller: telefoneTextFormFieldController,
                     decoration: const InputDecoration(
-                      labelText: L_LIVRO_OBSERVACAO,
+                      labelText: L_PESSOA_TELEFONE,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(25.0),
                         ),
                       ),
                     ),
-                    keyboardType: TextInputType.multiline,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return E_CAMPO_OBRIGATORIO;
+                      }
+                    },
                   ),
                 ),
                 Row(
