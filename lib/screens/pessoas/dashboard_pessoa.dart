@@ -54,8 +54,11 @@ class DashboardPessoaScreen extends StatelessWidget {
                         onPressed: () {
                           Navigator.pushNamed(
                             context,
-                            R_DASHBOARD_PESSOA,
-                            arguments: pessoas.elementAt(index),
+                            R_EMPRESTAR_LIVRO_PARA_PESSOA,
+                            arguments: [
+                              pessoas.elementAt(index),
+                              livroSelecionado
+                            ],
                           );
                         },
                         child: const Text(L_SELECIONAR),
