@@ -9,7 +9,11 @@ class DashboardPessoaScreen extends StatelessWidget {
   const DashboardPessoaScreen({super.key});
 
   static final LivroModel livroSelecionado = LivroModel(
-      id: L_VAZIO, nome: L_VAZIO, autor: L_VAZIO, observacao: L_VAZIO);
+      id: L_VAZIO,
+      nome: L_VAZIO,
+      autor: L_VAZIO,
+      observacao: L_VAZIO,
+      emprestado: L_NAO);
 
   void initData(BuildContext context) {
     LivroModel livro = ModalRoute.of(context)!.settings.arguments as LivroModel;

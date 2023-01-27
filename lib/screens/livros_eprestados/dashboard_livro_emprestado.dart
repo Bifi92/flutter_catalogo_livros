@@ -1,4 +1,5 @@
 import 'package:catalogo_livros/dao/emprestimo.dart';
+import 'package:catalogo_livros/dao/livro.dart';
 import 'package:catalogo_livros/models/emprestimo.dart';
 import 'package:catalogo_livros/models/livro.dart';
 import 'package:catalogo_livros/utils/constantes.dart';
@@ -9,7 +10,8 @@ class DashboardLivroEmprestadoScreen extends StatelessWidget {
   const DashboardLivroEmprestadoScreen({super.key});
 
   void onDevolver(EmprestimoModel emprestimo) {
-    devolverLivro(emprestimo);
+    devolverLivro(emprestimo.idLivro);
+    deletarEmprestimo(emprestimo);
   }
 
   @override

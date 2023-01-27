@@ -20,7 +20,7 @@ class DashboardLivroScreen extends StatelessWidget {
                   R_DASHBOARD_LIVRO_EMPRESTADO,
                 );
               },
-              child: Text('Emprestados'))
+              child: const Text(L_EMPRESTADOS))
         ],
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(

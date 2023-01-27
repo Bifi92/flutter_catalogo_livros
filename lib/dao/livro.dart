@@ -7,6 +7,7 @@ final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 Stream<QuerySnapshot<Map<String, dynamic>>> getLivros() {
   return _firestore
       .collection(C_LIVRO)
+      .where(C_LIVRO_EMPRESTADO, isEqualTo: L_NAO)
       .orderBy(C_LIVRO_NOME, descending: false)
       .snapshots();
 }
@@ -31,6 +32,7 @@ Future<void> salvarLivro(LivroModel livro) async {
       C_LIVRO_NOME: livro.nome,
       C_LIVRO_AUTOR: livro.autor,
       C_LIVRO_OBSERVACAO: livro.observacao,
+      C_LIVRO_EMPRESTADO: livro.emprestado,
     });
   }
 }
@@ -44,6 +46,36 @@ void deletarLivro(String idLivro) {
     if (snapshot.docs.isEmpty) return;
     for (DocumentSnapshot<Map<String, dynamic>> doc in snapshot.docs) {
       await doc.reference.delete();
+    }
+  });
+}
+
+void emprestarLivro(String idLivro) {
+  _firestore
+      .collection(C_LIVRO)
+      .where(C_LIVRO_ID, isEqualTo: idLivro)
+      .get()
+      .then((QuerySnapshot<Map<String, dynamic>> snapshot) async {
+    if (snapshot.docs.isEmpty) return;
+    for (DocumentSnapshot<Map<String, dynamic>> doc in snapshot.docs) {
+      LivroModel livro = LivroModel.documentMapToObject(doc);
+      livro.emprestado = L_SIM;
+      await doc.reference.update(livro.toDoc());
+    }
+  });
+}
+
+void devolverLivro(String idLivro) {
+  _firestore
+      .collection(C_LIVRO)
+      .where(C_LIVRO_ID, isEqualTo: idLivro)
+      .get()
+      .then((QuerySnapshot<Map<String, dynamic>> snapshot) async {
+    if (snapshot.docs.isEmpty) return;
+    for (DocumentSnapshot<Map<String, dynamic>> doc in snapshot.docs) {
+      LivroModel livro = LivroModel.documentMapToObject(doc);
+      livro.emprestado = L_NAO;
+      await doc.reference.update(livro.toDoc());
     }
   });
 }

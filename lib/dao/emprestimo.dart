@@ -25,7 +25,7 @@ Stream<QuerySnapshot<Map<String, dynamic>>> getLivrosEmprestados() {
       .snapshots();
 }
 
-void devolverLivro(EmprestimoModel emprestimo) {
+void deletarEmprestimo(EmprestimoModel emprestimo) {
   _firestore
       .collection(C_EMPRESTIMO)
       .where(C_EMPRESTIMO_ID, isEqualTo: emprestimo.id)

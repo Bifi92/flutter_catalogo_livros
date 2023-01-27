@@ -25,12 +25,12 @@ class EmprestimoModel {
     List<EmprestimoModel> response = [];
 
     for (QueryDocumentSnapshot<Map<String, dynamic>> doc in docs) {
-      response.add(mapToObject(doc));
+      response.add(queryMapToObject(doc));
     }
     return response;
   }
 
-  static mapToObject(QueryDocumentSnapshot<Map<String, dynamic>> doc) {
+  static queryMapToObject(QueryDocumentSnapshot<Map<String, dynamic>> doc) {
     return EmprestimoModel(
       id: doc[C_EMPRESTIMO_ID],
       idLivro: doc[C_EMPRESTIMO_LIVRO_ID],

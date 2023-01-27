@@ -33,6 +33,7 @@ class EmprestarLivroParaPessoaScreen extends StatelessWidget {
 
   onSalvar(BuildContext context) {
     formKey.currentState?.validate();
+    emprestarLivro(idLivroTextFormFieldController.text);
     salvarEmprestimo(EmprestimoModel(
       id: L_VAZIO,
       idLivro: idLivroTextFormFieldController.text,

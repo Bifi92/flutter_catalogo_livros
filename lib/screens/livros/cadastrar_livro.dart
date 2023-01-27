@@ -25,6 +25,7 @@ class CadastrarLivroScreen extends StatelessWidget {
         nome: nomeTextFormFieldController.text,
         autor: autorTextFormFieldController.text,
         observacao: observacaoTextFormFieldController.text,
+        emprestado: L_NAO,
       ),
     );
     Navigator.pop(context);

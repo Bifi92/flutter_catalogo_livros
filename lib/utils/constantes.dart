@@ -1,5 +1,10 @@
 // Geral
 const String L_FORMADO_DATA = "dd/MM/yyyy";
+const String L_SIM = "SIM";
+const String L_NAO = "NAO";
+
+// Erros
+const String E_CAMPO_OBRIGATORIO = "Campo obrigatório";
 
 // Coleções
 const String C_LIVRO = "livros";
@@ -12,6 +17,7 @@ const String C_LIVRO_ID = "id";
 const String C_LIVRO_NOME = "nome";
 const String C_LIVRO_AUTOR = "autor";
 const String C_LIVRO_OBSERVACAO = "observacao";
+const String C_LIVRO_EMPRESTADO = "emprestado";
 // Pessoas
 const String C_PESSOA_ID = "id";
 const String C_PESSOA_NOME = "nome";
@@ -40,6 +46,7 @@ const String L_LIVRO_NOME = "Nome";
 const String L_LIVRO_AUTOR = "Autor";
 const String L_LIVRO_OBSERVACAO = "Observação";
 const String L_EDITAR = "Editar Livro";
+const String L_EMPRESTADOS = "Emprestados";
 // Pessoas
 const String L_NENHUMA_PESSOA_ENCONTRADA = "Nenhuma pessoa encontrada";
 const String L_PESSOA_NOME = "Nome";
@@ -69,6 +76,3 @@ const String R_EMPRESTAR_LIVRO_PARA_PESSOA = "/emprestar_livro_para_pessoa";
 // Livros Emprestados
 const String R_DASHBOARD_LIVRO_EMPRESTADO = "/dashboard_livro_emprestado";
 const String R_DETALHE_LIVRO_EMPRESTADO = "/detalhe_livro_emprestado";
-
-// Erros
-const String E_CAMPO_OBRIGATORIO = "Campo obrigatório";
