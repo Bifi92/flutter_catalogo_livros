@@ -19,14 +19,7 @@ class PessoaModel {
     List<PessoaModel> response = [];
 
     for (QueryDocumentSnapshot<Map<String, dynamic>> doc in docs) {
-      response.add(
-        PessoaModel(
-          id: doc[C_PESSOA_ID],
-          nome: doc[C_PESSOA_NOME],
-          endereco: doc[C_PESSOA_ENDERECO],
-          telefone: doc[C_PESSOA_TELEFONE],
-        ),
-      );
+      response.add(mapToObject(doc));
     }
     return response;
   }

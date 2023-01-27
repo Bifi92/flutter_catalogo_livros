@@ -1,30 +1,25 @@
-import 'package:catalogo_livros/dao/livro.dart';
+import 'package:catalogo_livros/dao/emprestimo.dart';
+import 'package:catalogo_livros/models/emprestimo.dart';
 import 'package:catalogo_livros/models/livro.dart';
 import 'package:catalogo_livros/utils/constantes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class DashboardLivroScreen extends StatelessWidget {
-  const DashboardLivroScreen({super.key});
+class DashboardLivroEmprestadoScreen extends StatelessWidget {
+  const DashboardLivroEmprestadoScreen({super.key});
+
+  void onDevolver(EmprestimoModel emprestimo) {
+    devolverLivro(emprestimo);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(L_CATALOGO_DE_LIVROS),
-        actions: [
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  R_DASHBOARD_LIVRO_EMPRESTADO,
-                );
-              },
-              child: Text('Emprestados'))
-        ],
+        title: const Text(L_CATALOGO_DE_LIVROS_EMPRESTADOS),
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-        stream: getLivros(),
+        stream: getLivrosEmprestados(),
         initialData: null,
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -34,35 +29,33 @@ class DashboardLivroScreen extends StatelessWidget {
               child: Text(L_NENHUM_LIVRO_ENCONTRADO),
             );
           } else {
-            final List<LivroModel> livros =
-                LivroModel.mapToObjectList(snapshot.data!.docs);
+            final List<EmprestimoModel> emprestimos =
+                EmprestimoModel.mapToObjectList(snapshot.data!.docs);
 
             return SafeArea(
               child: ListView.builder(
-                itemCount: livros.length,
+                itemCount: emprestimos.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(livros.elementAt(index).nome),
-                    subtitle: Text(livros.elementAt(index).autor),
+                    title: Text(
+                        '$L_LIVRO: ${emprestimos.elementAt(index).nomeLivro}'),
+                    subtitle: Text(
+                        '$L_PESSOA: ${emprestimos.elementAt(index).nomePessoa}'),
                     leading: SizedBox(
                       height: 100,
                       width: 100,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(
-                            context,
-                            R_DASHBOARD_PESSOA,
-                            arguments: livros.elementAt(index),
-                          );
+                          onDevolver(emprestimos.elementAt(index));
                         },
-                        child: const Text(L_EMPRESTAR),
+                        child: const Text(L_DEVOLVER),
                       ),
                     ),
                     onTap: () {
                       Navigator.pushNamed(
                         context,
-                        R_EDITAR_LIVRO,
-                        arguments: livros.elementAt(index),
+                        R_DETALHE_LIVRO_EMPRESTADO,
+                        arguments: emprestimos.elementAt(index),
                       );
                     },
                   );
@@ -71,15 +64,6 @@ class DashboardLivroScreen extends StatelessWidget {
             );
           }
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(
-            context,
-            R_CADASTRAR_LIVRO,
-          );
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }

@@ -19,14 +19,7 @@ class LivroModel {
     List<LivroModel> response = [];
 
     for (QueryDocumentSnapshot<Map<String, dynamic>> doc in docs) {
-      response.add(
-        LivroModel(
-          id: doc[C_LIVRO_ID],
-          nome: doc[C_LIVRO_NOME],
-          autor: doc[C_LIVRO_AUTOR],
-          observacao: doc[C_LIVRO_OBSERVACAO],
-        ),
-      );
+      response.add(mapToObject(doc));
     }
     return response;
   }
