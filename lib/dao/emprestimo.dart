@@ -26,6 +26,17 @@ Stream<QuerySnapshot<Map<String, dynamic>>> getLivrosEmprestados() {
       .snapshots();
 }
 
+Future<List<EmprestimoModel>> getLivrosEmprestadosPorNomeDoLivro(String nome) {
+  return _firestore
+      .collection(C_EMPRESTIMO)
+      .where(C_EMPRESTIMO_LIVRO_NOME, isEqualTo: nome)
+      .get()
+      .then((QuerySnapshot<Map<String, dynamic>> snapshot) async {
+    if (snapshot.docs.isEmpty) return [];
+    return EmprestimoModel.mapToObjectList(snapshot.docs);
+  });
+}
+
 void deletarEmprestimo(EmprestimoModel emprestimo) {
   _firestore
       .collection(C_EMPRESTIMO)

@@ -3,6 +3,7 @@ import 'package:catalogo_livros/screens/livros/buscar_livro.dart';
 import 'package:catalogo_livros/screens/livros/cadastrar_livro.dart';
 import 'package:catalogo_livros/screens/livros/dashboard_livro.dart';
 import 'package:catalogo_livros/screens/livros/editar_livro.dart';
+import 'package:catalogo_livros/screens/livros_eprestados/buscar_livro_emprestado.dart';
 import 'package:catalogo_livros/screens/livros_eprestados/dashboard_livro_emprestado.dart';
 import 'package:catalogo_livros/screens/livros_eprestados/detalhe_livro_emprestado.dart';
 import 'package:catalogo_livros/screens/pessoas/cadastrar_pessoa.dart';
@@ -24,4 +25,6 @@ Map<String, WidgetBuilder> rotas = {
       const DashboardLivroEmprestadoScreen(),
   R_DETALHE_LIVRO_EMPRESTADO: (context) => const DetalheLivroEmprestadoScreen(),
   R_DASHBOARD_BUSCAR_LIVRO: (context) => const BuscarLivroScreen(),
+  R_DASHBOARD_BUSCAR_LIVRO_EMPRESTADO: (context) =>
+      const BuscarLivroEmprestadoScreen(),
 };

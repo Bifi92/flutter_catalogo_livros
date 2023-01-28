@@ -80,3 +80,4 @@ const String R_EMPRESTAR_LIVRO_PARA_PESSOA = "/emprestar_livro_para_pessoa";
 // Livros Emprestados
 const String R_DASHBOARD_LIVRO_EMPRESTADO = "/dashboard_livro_emprestado";
 const String R_DETALHE_LIVRO_EMPRESTADO = "/detalhe_livro_emprestado";
+const String R_DASHBOARD_BUSCAR_LIVRO_EMPRESTADO = "/buscar_livro_emprestado";

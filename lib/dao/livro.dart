@@ -12,7 +12,7 @@ Stream<QuerySnapshot<Map<String, dynamic>>> getLivros() {
       .snapshots();
 }
 
-Future<List<LivroModel>> getLivrosPorNomeOuAutor(String nome) {
+Future<List<LivroModel>> getLivrosPorNome(String nome) {
   return _firestore
       .collection(C_LIVRO)
       .where(C_LIVRO_EMPRESTADO, isEqualTo: L_NAO)

@@ -19,6 +19,16 @@ class DashboardLivroEmprestadoScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(L_CATALOGO_DE_LIVROS_EMPRESTADOS),
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  R_DASHBOARD_BUSCAR_LIVRO_EMPRESTADO,
+                );
+              },
+              child: const Icon(Icons.search)),
+        ],
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: getLivrosEmprestados(),
