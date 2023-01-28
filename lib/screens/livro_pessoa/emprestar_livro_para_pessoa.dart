@@ -31,6 +31,9 @@ class EmprestarLivroParaPessoaScreen extends StatelessWidget {
   static final TextEditingController dataDevolucaoTextFormFieldController =
       TextEditingController();
 
+  static final TextEditingController telefonePessoaTextFormFieldController =
+      TextEditingController();
+
   onSalvar(BuildContext context) {
     formKey.currentState?.validate();
     emprestarLivro(idLivroTextFormFieldController.text);
@@ -40,10 +43,13 @@ class EmprestarLivroParaPessoaScreen extends StatelessWidget {
       idPessoa: idPessoaTextFormFieldController.text,
       nomeLivro: nomeLivroTextFormFieldController.text,
       nomePessoa: nomePessoaTextFormFieldController.text,
+      telefonePessoa: telefonePessoaTextFormFieldController.text,
       dataRetirada: DateTime.parse(dataRetiradaTextFormFieldController.text),
       dataDevolucao: DateTime.parse(dataDevolucaoTextFormFieldController.text),
     ));
-    Navigator.pop(context);
+
+    Navigator.pushNamedAndRemoveUntil(
+        context, R_DASHBOARD_LIVRO, (Route<dynamic> route) => false);
   }
 
   void initData(BuildContext context) {
@@ -54,6 +60,7 @@ class EmprestarLivroParaPessoaScreen extends StatelessWidget {
 
     idPessoaTextFormFieldController.text = pessoa.id;
     nomePessoaTextFormFieldController.text = pessoa.nome;
+    telefonePessoaTextFormFieldController.text = pessoa.telefone;
     idLivroTextFormFieldController.text = livro.id;
     nomeLivroTextFormFieldController.text = livro.nome;
     dataRetiradaTextFormFieldController.text = DateTime.now().toString();

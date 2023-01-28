@@ -7,6 +7,7 @@ class EmprestimoModel {
   late String idPessoa;
   late String nomeLivro;
   late String nomePessoa;
+  late String telefonePessoa;
   late DateTime dataRetirada;
   late DateTime dataDevolucao;
 
@@ -16,6 +17,7 @@ class EmprestimoModel {
     required this.idPessoa,
     required this.nomeLivro,
     required this.nomePessoa,
+    required this.telefonePessoa,
     required this.dataRetirada,
     required this.dataDevolucao,
   });
@@ -37,6 +39,7 @@ class EmprestimoModel {
       idPessoa: doc[C_EMPRESTIMO_PESSOA_ID],
       nomeLivro: doc[C_EMPRESTIMO_LIVRO_NOME],
       nomePessoa: doc[C_EMPRESTIMO_PESSOA_NOME],
+      telefonePessoa: doc[C_EMPRESTIMO_PESSOA_TELEFONE],
       dataRetirada: doc[C_EMPRESTIMO_DATA_RETIRADA].toDate(),
       dataDevolucao: doc[C_EMPRESTIMO_DATA_DEVOLUCAO].toDate(),
     );
@@ -49,6 +52,7 @@ class EmprestimoModel {
       C_EMPRESTIMO_PESSOA_ID: idPessoa,
       C_EMPRESTIMO_LIVRO_NOME: nomeLivro,
       C_EMPRESTIMO_PESSOA_NOME: nomePessoa,
+      C_EMPRESTIMO_PESSOA_TELEFONE: telefonePessoa,
       C_EMPRESTIMO_DATA_RETIRADA: dataRetirada,
       C_EMPRESTIMO_DATA_DEVOLUCAO: dataDevolucao,
     };

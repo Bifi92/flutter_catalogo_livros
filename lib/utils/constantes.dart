@@ -31,6 +31,7 @@ const String C_EMPRESTIMO_LIVRO_NOME = "nomeLivro";
 const String C_EMPRESTIMO_PESSOA_NOME = "nomePessoa";
 const String C_EMPRESTIMO_DATA_RETIRADA = "dataRetirada";
 const String C_EMPRESTIMO_DATA_DEVOLUCAO = "dataDevolucao";
+const String C_EMPRESTIMO_PESSOA_TELEFONE = "telefonePessoa";
 
 // Labels
 const String L_VAZIO = "";

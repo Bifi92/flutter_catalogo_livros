@@ -20,6 +20,9 @@ class DetalheLivroEmprestadoScreen extends StatelessWidget {
   static final TextEditingController dataDevolucaoTextFormFieldController =
       TextEditingController();
 
+  static final TextEditingController telefonePessoaTextFormFieldController =
+      TextEditingController();
+
   void initData(BuildContext context) {
     EmprestimoModel emprestimo =
         ModalRoute.of(context)!.settings.arguments as EmprestimoModel;
@@ -30,6 +33,7 @@ class DetalheLivroEmprestadoScreen extends StatelessWidget {
         emprestimo.dataRetirada.toString();
     dataDevolucaoTextFormFieldController.text =
         emprestimo.dataDevolucao.toString();
+    telefonePessoaTextFormFieldController.text = emprestimo.telefonePessoa;
   }
 
   @override
@@ -93,6 +97,22 @@ class DetalheLivroEmprestadoScreen extends StatelessWidget {
                     controller: nomePessoaTextFormFieldController,
                     decoration: const InputDecoration(
                       labelText: L_PESSOA,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(25.0),
+                        ),
+                      ),
+                    ),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextFormField(
+                    enabled: false,
+                    controller: telefonePessoaTextFormFieldController,
+                    decoration: const InputDecoration(
+                      labelText: L_PESSOA_TELEFONE,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(25.0),

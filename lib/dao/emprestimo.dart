@@ -13,6 +13,7 @@ Future<void> salvarEmprestimo(EmprestimoModel emprestimo) async {
     C_EMPRESTIMO_PESSOA_ID: emprestimo.idPessoa,
     C_EMPRESTIMO_LIVRO_NOME: emprestimo.nomeLivro,
     C_EMPRESTIMO_PESSOA_NOME: emprestimo.nomePessoa,
+    C_EMPRESTIMO_PESSOA_TELEFONE: emprestimo.telefonePessoa,
     C_EMPRESTIMO_DATA_RETIRADA: emprestimo.dataRetirada,
     C_EMPRESTIMO_DATA_DEVOLUCAO: emprestimo.dataDevolucao,
   });
@@ -21,7 +22,7 @@ Future<void> salvarEmprestimo(EmprestimoModel emprestimo) async {
 Stream<QuerySnapshot<Map<String, dynamic>>> getLivrosEmprestados() {
   return _firestore
       .collection(C_EMPRESTIMO)
-      .orderBy(C_EMPRESTIMO_LIVRO_NOME, descending: false)
+      .orderBy(C_EMPRESTIMO_DATA_DEVOLUCAO, descending: false)
       .snapshots();
 }
 

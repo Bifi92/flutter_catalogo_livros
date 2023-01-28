@@ -34,11 +34,36 @@ class DashboardLivroEmprestadoScreen extends StatelessWidget {
             final List<EmprestimoModel> emprestimos =
                 EmprestimoModel.mapToObjectList(snapshot.data!.docs);
 
+            DateTime dataAtual = DateTime.now();
+
             return SafeArea(
               child: ListView.builder(
                 itemCount: emprestimos.length,
                 itemBuilder: (context, index) {
+                  bool faltaUmaSemana = emprestimos
+                      .elementAt(index)
+                      .dataDevolucao
+                      .isBefore(dataAtual.add(const Duration(days: 7)));
+
+                  bool atrasado = emprestimos
+                      .elementAt(index)
+                      .dataDevolucao
+                      .isBefore(dataAtual);
+
+                  bool alteraCor = faltaUmaSemana || atrasado;
+
+                  Color corTexto = Colors.black;
+
+                  if (faltaUmaSemana) {
+                    corTexto = Colors.yellow.shade800;
+                  }
+
+                  if (atrasado) {
+                    corTexto = Colors.red;
+                  }
+
                   return ListTile(
+                    textColor: alteraCor ? corTexto : null,
                     title: Text(
                         '$L_LIVRO: ${emprestimos.elementAt(index).nomeLivro}'),
                     subtitle: Text(
