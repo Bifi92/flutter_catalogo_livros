@@ -6,6 +6,7 @@ import 'package:catalogo_livros/screens/livros/editar_livro.dart';
 import 'package:catalogo_livros/screens/livros_eprestados/buscar_livro_emprestado.dart';
 import 'package:catalogo_livros/screens/livros_eprestados/dashboard_livro_emprestado.dart';
 import 'package:catalogo_livros/screens/livros_eprestados/detalhe_livro_emprestado.dart';
+import 'package:catalogo_livros/screens/pessoas/buscar_pessoa.dart';
 import 'package:catalogo_livros/screens/pessoas/cadastrar_pessoa.dart';
 import 'package:catalogo_livros/screens/pessoas/dashboard_pessoa.dart';
 import 'package:catalogo_livros/screens/pessoas/editar_pessoa.dart';
@@ -24,7 +25,7 @@ Map<String, WidgetBuilder> rotas = {
   R_DASHBOARD_LIVRO_EMPRESTADO: (context) =>
       const DashboardLivroEmprestadoScreen(),
   R_DETALHE_LIVRO_EMPRESTADO: (context) => const DetalheLivroEmprestadoScreen(),
-  R_DASHBOARD_BUSCAR_LIVRO: (context) => const BuscarLivroScreen(),
-  R_DASHBOARD_BUSCAR_LIVRO_EMPRESTADO: (context) =>
-      const BuscarLivroEmprestadoScreen(),
+  R_BUSCAR_LIVRO: (context) => const BuscarLivroScreen(),
+  R_BUSCAR_LIVRO_EMPRESTADO: (context) => const BuscarLivroEmprestadoScreen(),
+  R_BUSCAR_PESSOA: (context) => const BuscarPessoaScreen(),
 };

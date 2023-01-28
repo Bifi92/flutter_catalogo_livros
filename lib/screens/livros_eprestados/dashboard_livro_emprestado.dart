@@ -24,7 +24,7 @@ class DashboardLivroEmprestadoScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(
                   context,
-                  R_DASHBOARD_BUSCAR_LIVRO_EMPRESTADO,
+                  R_BUSCAR_LIVRO_EMPRESTADO,
                 );
               },
               child: const Icon(Icons.search)),

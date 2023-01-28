@@ -55,6 +55,7 @@ const String L_NENHUMA_PESSOA_ENCONTRADA = "Nenhuma pessoa encontrada";
 const String L_PESSOA_NOME = "Nome";
 const String L_PESSOA_ENDERECO = "Endereço";
 const String L_PESSOA_TELEFONE = "Telefone";
+const String L_BUSCAR_PESSOAS = "Buscar Pessoas";
 //Emprestar Livros
 const String L_EMPRESTAR_LIVRO = "Emprestar Livro";
 const String L_EMPRESTAR_LIVRO_DATA_DEVOLUCAO = "Data de devolução";
@@ -70,14 +71,15 @@ const String L_EMPRESTAR_LIVRO_DATA_RETIRADA = "Data de retirada";
 const String R_DASHBOARD_LIVRO = "/dashboard_livro";
 const String R_CADASTRAR_LIVRO = "/cadastrar_livro";
 const String R_EDITAR_LIVRO = "/editar_livro";
-const String R_DASHBOARD_BUSCAR_LIVRO = "/buscar_livro";
+const String R_BUSCAR_LIVRO = "/buscar_livro";
 // Pessoas
 const String R_DASHBOARD_PESSOA = "/dashboard_pessoa";
 const String R_EDITAR_PESSOA = "/editar_pessoa";
 const String R_CADASTRAR_PESSOA = "/cadastrar_pessoa";
+const String R_BUSCAR_PESSOA = "/buscar_pessoa";
 // Emprestar Livros
 const String R_EMPRESTAR_LIVRO_PARA_PESSOA = "/emprestar_livro_para_pessoa";
 // Livros Emprestados
 const String R_DASHBOARD_LIVRO_EMPRESTADO = "/dashboard_livro_emprestado";
 const String R_DETALHE_LIVRO_EMPRESTADO = "/detalhe_livro_emprestado";
-const String R_DASHBOARD_BUSCAR_LIVRO_EMPRESTADO = "/buscar_livro_emprestado";
+const String R_BUSCAR_LIVRO_EMPRESTADO = "/buscar_livro_emprestado";

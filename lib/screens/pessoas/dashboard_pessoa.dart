@@ -29,6 +29,14 @@ class DashboardPessoaScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("$L_EMPRESTAR_LIVRO: ${livroSelecionado.nome}"),
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, R_BUSCAR_PESSOA,
+                    arguments: livroSelecionado);
+              },
+              child: const Icon(Icons.search)),
+        ],
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: getPessoas(),
