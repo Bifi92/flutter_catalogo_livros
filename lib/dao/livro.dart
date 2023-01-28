@@ -12,6 +12,18 @@ Stream<QuerySnapshot<Map<String, dynamic>>> getLivros() {
       .snapshots();
 }
 
+Future<List<LivroModel>> getLivrosPorNomeOuAutor(String nome) {
+  return _firestore
+      .collection(C_LIVRO)
+      .where(C_LIVRO_EMPRESTADO, isEqualTo: L_NAO)
+      .where(C_LIVRO_NOME, isEqualTo: nome)
+      .get()
+      .then((QuerySnapshot<Map<String, dynamic>> snapshot) async {
+    if (snapshot.docs.isEmpty) return [];
+    return LivroModel.mapToObjectList(snapshot.docs);
+  });
+}
+
 Future<void> salvarLivro(LivroModel livro) async {
   final livroId = _firestore.collection(C_LIVRO).doc().id;
 

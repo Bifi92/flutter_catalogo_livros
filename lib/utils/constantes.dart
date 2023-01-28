@@ -48,6 +48,8 @@ const String L_LIVRO_AUTOR = "Autor";
 const String L_LIVRO_OBSERVACAO = "Observação";
 const String L_EDITAR = "Editar Livro";
 const String L_EMPRESTADOS = "Emprestados";
+const String L_BUSCAR = "Buscar";
+const String L_BUSCAR_LIVROS = "Buscar Livros";
 // Pessoas
 const String L_NENHUMA_PESSOA_ENCONTRADA = "Nenhuma pessoa encontrada";
 const String L_PESSOA_NOME = "Nome";
@@ -68,6 +70,7 @@ const String L_EMPRESTAR_LIVRO_DATA_RETIRADA = "Data de retirada";
 const String R_DASHBOARD_LIVRO = "/dashboard_livro";
 const String R_CADASTRAR_LIVRO = "/cadastrar_livro";
 const String R_EDITAR_LIVRO = "/editar_livro";
+const String R_DASHBOARD_BUSCAR_LIVRO = "/buscar_livro";
 // Pessoas
 const String R_DASHBOARD_PESSOA = "/dashboard_pessoa";
 const String R_EDITAR_PESSOA = "/editar_pessoa";

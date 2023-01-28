@@ -17,6 +17,14 @@ class DashboardLivroScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(
                   context,
+                  R_DASHBOARD_BUSCAR_LIVRO,
+                );
+              },
+              child: const Icon(Icons.search)),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
                   R_DASHBOARD_LIVRO_EMPRESTADO,
                 );
               },
